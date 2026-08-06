@@ -84,4 +84,4 @@ if st.session_state.rag_index is not None:
                     st.write(chunk)
                     st.divider()
 else:
-    st.info("Önce bir .docx dosyası yükle.") bunu dener misin
+    st.info("Önce bir .docx dosyası yükle.") 
