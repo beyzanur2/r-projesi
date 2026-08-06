@@ -42,13 +42,18 @@ def split_into_chunks(text: str, chunk_size: int = 800, overlap: int = 150) -> l
         start += chunk_size - overlap
     return [c.strip() for c in chunks if c.strip()]
 
+import streamlit as st
+
+@st.cache_resource
+def load_embedding_model(model_name: str):
+    return SentenceTransformer(model_name)
 
 class RagIndex:
     """Belgeyi indeksler (chunk + embed) ve soru geldiğinde en alakalı parçaları bulur."""
 
     def __init__(self, embedding_model_name: str = "all-MiniLM-L6-v2"):
-        self.embedder = SentenceTransformer(embedding_model_name)
-        self.chunks: list[str] = []
+        self.embedder = load_embedding_model(embedding_model_name)
+        self.chunks: List[str] = []
         self.chunk_embeddings: np.ndarray | None = None
 
     def index_document(self, text: str):
