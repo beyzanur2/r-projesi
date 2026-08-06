@@ -1,0 +1,2 @@
+# r-projesi
+Ders Özet
