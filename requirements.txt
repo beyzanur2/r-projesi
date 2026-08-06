@@ -1,0 +1,7 @@
+streamlit
+python-docx
+sentence-transformers
+groq
+numpy
+python-dotenv
+starlette<0.36.0
